@@ -1,0 +1,157 @@
+#include <stdio.h>
+#include <string.h>
+
+ int Dest=0;
+    char D[10];
+    
+    int F1[10]={0},F2[10]={0},F3[10]={0};
+    int F=1;
+    int Fno=0;
+    int Full=0;
+    int k;
+    int A1=10,A2=10,A3=10,A;
+    
+    char FNAME1[10][20], FNAME2[10][20], FNAME3[10][20];
+    char LNAME1[10][20], LNAME2[10][20], LNAME3[10][20];;
+    int AGE1[10], AGE2[10], AGE3[10];
+    long long int Mol1[10],Mol2[10],Mol3[10];
+    
+    char Fname[20], Lname[20];
+    long long int Mobile;
+    int age;
+    
+    int i;
+    
+void Book()
+{
+
+    printf("Passenger First Name : ");
+    scanf("%s",Fname);
+    printf("Passenger Last Name : ");
+    scanf("%s",Lname);
+    printf("Passenger Age  : ");
+    scanf("%d",&age);
+    printf("Passenger Mobile Number : ");
+    scanf("%lld",&Mobile ); 
+    printf("Seat Number : %d \n",11-A);
+    A--;
+}
+void PassList()
+{
+    printf(" Check passenger list 1 Mumbai | 2 Delhi | 3 Kolkota : " );
+    scanf("%d",&Dest);           
+    printf("Seat No \t\t Name \t\t Mobile no \t\t Age\n");
+    switch(Dest)
+    {
+        case 1:
+            for(int j=0;j<10-A1;j++)
+            {
+                printf(" %d \t\t %s %s \t\t %lld \t\t %d \n",j+1,FNAME1[j],LNAME1[j],Mol1[j],AGE1[j]);
+            }
+            break;
+        case 2:
+            for(int j=0;j<10-A2;j++)
+            {
+                printf(" %d \t\t %s %s \t\t %lld \t\t %d \n",j+1,FNAME2[j],LNAME2[j],Mol2[j],AGE2[j]);
+            }
+            break;
+        case 3:
+            for(int j=0;j<10-A3;j++)
+            {
+                printf(" %d \t\t %s %s \t\t %lld \t\t %d \n",j+1,FNAME3[j],LNAME3[j],Mol3[j],AGE3[j]);
+            }
+            break;
+        default: 
+            break;
+    }
+}
+int main() {
+
+    printf("~~~ Flight Reservation System ~~~\n");
+   
+    while(1)
+    {
+        while(F)
+        {
+            printf("Travel Destination - 1 Mumbai | 2 Delhi | 3 Kolkota : ");
+            scanf("%d",&Dest);
+            char Mum[10]="Mumbai", Del[10]="Delhi", Kol[10]="Kolkota";
+            switch(Dest)
+            {
+                case 1: 
+                    strcpy(D,Mum); 
+                    Fno=111; 
+                    Full=A1>0?0:1; 
+                    A=A1; 
+                    F=0; 
+                    break;
+                case 2: 
+                    strcpy(D,Del); 
+                    Fno=222; 
+                    Full=A2>0?0:1; 
+                    A=A2; 
+                    F=0; 
+                    A2--; 
+                    break;
+                case 3: 
+                    strcpy(D,Kol); 
+                    Fno=333; 
+                    Full=A3>0?0:1; 
+                    A=A3; 
+                    F=0; 
+                    A3--; 
+                    break;
+                default: printf("Please enter a Valid Destination\n\n");
+            }
+        }
+        printf("Travel from 'Chennai' to '%s' \n",D);
+        if(!Full)
+        printf("Flight No. %d is Avaiable.\n",Fno);
+        else
+        {
+            printf("No flight is Avaiable Currently\n");
+            break;
+        }
+        {
+            Book();
+            switch(Dest)
+            {
+                case 1:
+                    A1=A;
+                    i=9-A1;
+                    strcpy(FNAME1[i],Fname);
+                    strcpy(LNAME1[i],Lname);
+                    AGE1[i]=age;
+                    Mol1[i]=Mobile;
+                    break;
+                case 2:
+                    A2=A;
+                    i=9-A2;
+                    strcpy(FNAME2[i],Fname);
+                    strcpy(LNAME2[i],Lname);
+                    AGE2[i]=age;
+                    Mol2[i]=Mobile;
+                    break;
+                case 3:
+                    A3=A;
+                    i=9-A3;
+                    strcpy(FNAME3[i],Fname);
+                    strcpy(LNAME3[i],Lname);
+                    AGE3[i]=age;
+                    Mol3[i]=Mobile;
+                    break;
+                default : break;
+            }
+            printf("~~~~Booking done Succesfully~~~~\n\n");
+            PassList();
+        }
+        printf(" ENTER  :  1 Book Next Passenger | 2 Exit ");
+        scanf("%d",&k);
+        switch(k)
+        {
+            case 1: break;
+            case 2: return 0;
+        }
+    }
+    return 0;
+}
